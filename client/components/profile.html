@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Manage Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <button id="homePage" type="button" class="nav-btn" onclick="location.href='/dashboard'">Dashboard</button>
+    <button id="profile" type="button" class="nav-btn" onclick="location.href='/profile'">Profile</button>
+    <button id="getQuote" type="button" class="nav-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+    <button id="quoteHistory" type="button" class="nav-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    <button id="signOut" type="button" class="nav-btn" onclick="location.href='/logout'">Sign Out</button>
+  </nav>
+    <div class="background"></div>
+    <div class="cover">
+      <div class="profile-pic"></div>
+    </div>
+    <div class="info-field">
+      <button type="button" class="edit-btn" onclick="location.href='/edit_profile'">Edit Profile</button>
+      <div class="info-input-class-container">
+        <form class="info-input-class">
+          <label for="fullName" class="info-label">Full Name</label><br>
+          <input id="fullName" type="text" value="<%= fullName %>" class="info-input-field" maxlength="50" readonly ><br>
+          <label for="addressOne" class="info-label">Address 1</label><br>
+          <input id="addressOne" type="text" value="<%= pAddress %>" class="info-input-field" maxlength="100" readonly><br>
+          <label for="cityOneR" class="info-label">City</label>
+          <input id="cityOneR" type="text" value="<%= pCity %>" class="info-input-field" maxlength="100" readonly>
+          <label for="stateOneR" class="info-label">State</label>
+          <input id="stateOneR" type="text" value="<%= pState %>" class="info-input-field" readonly>
+          <label for="zipCodeOne" class="info-label">Zip Code</label>
+          <input id="zipCodeOne" type="text" value="<%= pZipcode %>" class="info-input-field" maxlength="9" minlength="5" readonly><br>
+          <label for="addressTwo" class="info-label">Address 2 (optional)</label><br>
+          <input id="addressTwo" type="text" value="<%= sAddress %>" class="info-input-field" maxlength="100" readonly><br>
+          <label for="cityTwoR" class="info-label">City</label>
+          <input id="cityTwoR" type="text" value="<%= sCity %>" class="info-input-field" maxlength="100" readonly>
+          <label for="stateTwoR" class="info-label">State</label>
+          <input id="stateTwoR" type="text" value="<%= sState %>" class="info-input-field" readonly>
+          <label for="zipCodeTwo" class="info-label">Zip Code</label>
+          <input id="zipCodeTwo" type="text" value="<%= sZipcode %>" class="info-input-field" maxlength="9" minlength="5" readonly><br>
+        </form>
+      </div>
+    </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
+</html>

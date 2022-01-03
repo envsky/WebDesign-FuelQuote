@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fuel Quote History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <button id="homePage" type="button" class="nav-btn" onclick="location.href='/dashboard'">Dashboard</button>
+    <button id="profile" type="button" class="nav-btn" onclick="location.href='/profile'">Profile</button>
+    <button id="getQuote" type="button" class="nav-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+    <button id="quoteHistory" type="button" class="nav-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    <button id="signOut" type="button" class="nav-btn" onclick="location.href='/logout'">Sign Out</button>
+  </nav>
+    <div class="background"></div>
+    <div class="cover"></div>
+    <div class="info-field">
+        <table class="fuel-history-table">
+          <thead class="fuel-history-table-header">
+            <tr>
+              <th>Gallons Requested</th>
+              <th>Delivery Address</th>
+              <th>Delivery Date</th>
+              <th>Suggested Price/Gallon</th>
+              <th>Total Amount Due</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+            <% fuelHistory.forEach(function(entry) {%>
+              <tr> 
+                <td><%= entry.gallons_requested %></td>
+                <td><%= entry.delivery_address %></td>
+                <td><%= entry.delivery_date %></td>
+                <td>$<%= entry.suggested_price_per_gallon %></td>
+                <td>$<%= entry.total %></td>     
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+    </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
+</html>

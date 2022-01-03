@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fuel Quote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <button id="homePage" type="button" class="nav-btn" onclick="location.href='/dashboard'">Dashboard</button>
+    <button id="profile" type="button" class="nav-btn" onclick="location.href='/profile'">Profile</button>
+    <button id="getQuote" type="button" class="nav-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+    <button id="quoteHistory" type="button" class="nav-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    <button id="signOut" type="button" class="nav-btn" onclick="location.href='/logout'">Sign Out</button>
+  </nav>
+    <div class="background"></div>
+    <div class="cover"></div>
+    <div class="info-field">
+      <div class="info-input-class-container">
+        <form action ="/fuel_quote" class="info-input-class" method="POST">
+            <label for="gallonsRequested" class="info-label-required">Gallons Requested</label><br>
+            <input id="gallonsRequested" name="gallonsRequested" type="number" class="info-input-field" maxlength="100" placeholder="0" required><br>
+            <label for="deliveryAddress" class="info-label-required">Delivery Address</label><br>
+            <input id="deliveryAddress" value="<%= address %>" name="deliveryAddress" type="text" class="info-input-field" maxlength="100" readonly><br>
+            <label for="deliveryDate" class="info-label-required">Delivery Date</label><br>
+            <input id="deliveryDate" name="deliveryDate" type="date" class="info-input-field" maxlength="100" required><br>
+            <!-- <label for="suggested" class="info-label-required">Suggested Price/Gallon</label><br> -->
+            <button id="calculateBtn" type="button" class="submit-btn">Calculate Total</button><br>
+              <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <label for="suggestedPrice" class="info-label">Suggested Price/Gallon</label><br>
+                  <input type="text" name="suggestedPrice" id="suggestedPrice" class="info-input-field" readonly><br><br>
+                  <label for="total" class="info-label">Total</label><br>
+                  <input type="text" name="total" id="total" class="info-input-field" readonly><br>
+                </div>
+              </div><br><br>
+            <!-- <label for="total_cost" class="info-label-required">Total: </label><br> -->
+            <!-- <button id="total_cost">Calculate</button><br> -->
+            <button id="fuel_quoteSubmit" type="submit" class="submit-btn" onclick="calculateTotal()"> Submit!</button>
+        </form> 
+            
+    </div>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("calculateBtn");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      function calculateTotal() {
+        var current_price = 1.50;
+        var company_profit = 0.10;
+        var gallons_requested = document.getElementById("gallonsRequested").value;
+        var gallons_requested_factor = 0;
+        if (gallons_requested < 1000) {
+          gallons_requested_factor = 0.03;
+        }
+        else {
+          gallons_requested_factor = 0.02;
+        }
+
+        var margin = current_price * (parseFloat("<%= loc_factor %>") - parseFloat("<%= history_factor %>") + gallons_requested_factor + company_profit);
+        var suggested_price = current_price + margin;
+        var total_price = (gallons_requested * suggested_price).toFixed(2);
+        
+        document.getElementById("suggestedPrice").value = "$" + suggested_price;
+        document.getElementById("total").value = "$" + total_price;
+      }
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+        calculateTotal();
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
+</html>

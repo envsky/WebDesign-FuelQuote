@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <button id="homePage" type="button" class="nav-btn" onclick="location.href='/dashboard'">Dashboard</button>
+    <button id="profile" type="button" class="nav-btn" onclick="location.href='/profile'">Profile</button>
+    <button id="getQuote" type="button" class="nav-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+    <button id="quoteHistory" type="button" class="nav-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    <button id="signOut" type="button" class="nav-btn" onclick="location.href='/logout'">Sign Out</button>
+  </nav>
+
+  <div class="background"></div>
+    <div class="cover"></div>
+    <div class="info-field">
+      <div class="welcome">
+        <a> Welcome, <%= fullName %>! </a>
+      </div>
+      <button id="mainGetQuote" type="button" class="main-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+      <button id="mainQuoteHistory" type="button" class="main-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    </div>
+  
+  
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
+</html>

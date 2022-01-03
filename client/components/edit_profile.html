@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Edit Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <button id="homePage" type="button" class="nav-btn" onclick="location.href='/dashboard'">Dashboard</button>
+    <button id="profile" type="button" class="nav-btn" onclick="location.href='/profile'">Profile</button>
+    <button id="getQuote" type="button" class="nav-btn" onclick="location.href='/fuel_quote'">Get Fuel Quote</button>
+    <button id="quoteHistory" type="button" class="nav-btn" onclick="location.href='/fuel_history'">Quote History</button>
+    <button id="signOut" type="button" class="nav-btn" onclick="location.href='/logout'">Sign Out</button>
+  </nav>
+  <div class="background"></div>
+    <div class="cover"></div>
+    <div class="info-field">
+      <% if(message){ %>
+        <div class="alert"><%= message %></div>
+      <% } %>
+      <div class="info-input-class-container">
+        <form class="info-input-class" action="/edit_profile" method="POST">
+          <label for="fullName" class="info-label-required">Full Name (maximum 50 characters)</label><br>
+          <input id="fullName" name="fullName" type="text" value="<%= fullName %>" class="info-input-field" maxlength="50" required><br>
+          <label for="addressOne" class="info-label-required">Address 1 (maximum 100 characters)</label><br>
+          <input id="addressOne" name="addressOne" type="text" value="<%= pAddress %>" class="info-input-field" maxlength="100" required><br>
+          <label for="cityOne" class="info-label-required">City (maximum 100 characters)</label>
+          <input id="cityOne" name="cityOne" type="text" value="<%= pCity %>" class="info-input-field" maxlength="100" required>
+          <label for="stateOne" class="info-label-required">State</label>
+          <select id="stateOne" name="stateOne" class="info-input-field" required>
+            <option value="<%= pState %>" selected><%= pState %></option>
+            <% states.forEach(function(state) {%>
+              <option value = "<%= state.state_code %>"><%= state.state_code %></option>
+            <% }); %>
+          </select>
+          <label for="zipCodeOne" class="info-label-required">Zip Code (5-9 digits)</label>
+          <input id="zipCodeOne" name="zipCodeOne" type="text" value="<%= pZipcode %>" class="info-input-field" maxlength="9" minlength="5" required><br>
+          
+          <label for="addressTwo" class="info-label">Address 2 (maximum 100 characters) (optional)</label><br>
+          <input id="addressTwo" name="addressTwo" type="text" value="<%= sAddress %>" class="info-input-field" maxlength="100"><br>
+          <label for="cityTwo" class="info-label">City (maximum 100 characters)</label>
+          <input id="cityTwo" name="cityTwo" type="text" value="<%= sCity %>" class="info-input-field" maxlength="100">
+          <label for="stateTwo" class="info-label">State</label>
+          <select id="stateTwo" name="stateTwo" class="info-input-field">
+            <option value="<%= sState %>" selected><%= sState %></option>
+            <option value = "empty">empty</option>
+            <% states.forEach(function(state) {%>
+              <option value = "<%= state.state_code %>"><%= state.state_code %></option>
+            <% }); %>
+          </select>
+          <label for="zipCodeTwo" class="info-label">Zip Code (5-9 digits)</label>
+          <input id="zipCodeTwo" name="zipCodeTwo" type="text" value="<%= sZipcode %>" class="info-input-field" maxlength="9" minlength="5"><br>
+          <button id="saveSubmit" type="submit" class="save-btn">Save</button>
+        </form>
+      </div>
+    </div>
+  
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
+</html>
