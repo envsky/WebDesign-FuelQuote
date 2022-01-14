@@ -29,7 +29,11 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', dirname);
 
-app.get(['/', '/index'], (req, res) => {
+app.get('/', (req, res) => {
+  res.redirect('/index');
+});
+
+app.get('/index', (req, res) => {
   res.render(path.join(dirname + '/index.html'), {message:req.flash('error')});
 });
 
