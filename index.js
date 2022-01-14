@@ -29,10 +29,6 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', dirname);
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(dirname + '/landing.html'));
-});
-
 app.get('/index', (req, res) => {
   res.render(path.join(dirname + '/index.html'), {message:req.flash('error')});
 });
