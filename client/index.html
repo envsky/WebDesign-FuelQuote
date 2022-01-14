@@ -23,7 +23,7 @@
     </div>
   </nav>
   <div class="home">
-    <% if(message){ %>
+    <% if(message != 'message' || message != 'error'){ %>
       <div class="alert"><%= message %></div>
     <% } %>
     <div class="auth-field">
