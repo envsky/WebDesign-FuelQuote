@@ -23,6 +23,9 @@
     </div>
   </nav>
   <div class="home">
+    <% if(message){ %>
+      <div class="alert"><%= message %></div>
+    <% } %>
     <div class="auth-field">
       <div class="button-field">
         <div id="btn"></div>
