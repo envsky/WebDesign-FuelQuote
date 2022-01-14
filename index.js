@@ -559,7 +559,7 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('/client'));
+  app.use(express.static('client'));
 }
 
 app.listen(PORT, ()=>{
