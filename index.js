@@ -6,7 +6,6 @@ const flash = require("express-flash");
 const passport = require("passport");
 const pool = require("./db");
 const initializePassport = require("./passportConfig");
-const { reset } = require("nodemon");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
