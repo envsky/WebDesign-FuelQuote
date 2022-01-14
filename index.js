@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
-const fs = require("fs");
 const pool = require("./db");
 const initializePassport = require("./passportConfig");
 const { reset } = require("nodemon");
