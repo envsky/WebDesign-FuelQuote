@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bcrypt = require("bcrypt");
-const session = require("express-session");
+const session = require("cookie-session");
 const flash = require("express-flash");
 const passport = require("passport");
 const pool = require("./db");
@@ -556,6 +556,10 @@ function checkNotAuthenticated(req, res, next) {
       return next();
     }
     res.redirect("/index");
+}
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('/client'));
 }
 
 app.listen(PORT, ()=>{
