@@ -30,7 +30,7 @@ app.set('view engine', 'html');
 app.set('views', dirname);
 
 app.get('/', (req, res) => {
-  res.render(path.join(dirname + '/landing.html'));
+  res.sendFile(path.join(dirname + '/landing.html'));
 });
 
 app.get('/index', (req, res) => {
