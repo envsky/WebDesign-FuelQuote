@@ -30,7 +30,7 @@ app.set('view engine', 'html');
 app.set('views', dirname);
 
 app.get('/index', (req, res) => {
-  res.render(path.join(dirname + '/index.html'), {message:req.flash('error')});
+  res.render(path.join(dirname + '/components/index.html'), {message:req.flash('error')});
 });
 
 app.get("/login", (req, res) => {
