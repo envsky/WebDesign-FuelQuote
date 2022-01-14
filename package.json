@@ -22,7 +22,7 @@
     "test": ""
   },
   "engines": {
-    "node": "14.x"
+    "node": "17.x"
   },
   "repository": {
     "type": "git",
