@@ -10,10 +10,10 @@ const initializePassport = require("./passportConfig");
 const { reset } = require("nodemon");
 
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 5000;
 initializePassport(passport);
 
-const dirname = __dirname + "/../client"
+const dirname = __dirname + "/client"
 app.use(express.static(dirname));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -30,6 +30,10 @@ app.use(flash());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', dirname);
+
+app.get('/', (req, res) => {
+  res.render(path.join(dirname + '/index.html'), {message:req.flash('error')});
+});
 
 app.get('/index', (req, res) => {
   res.render(path.join(dirname + '/index.html'), {message:req.flash('error')});
