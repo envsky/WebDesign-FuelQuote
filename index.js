@@ -30,7 +30,7 @@ app.set('view engine', 'html');
 app.set('views', dirname);
 
 app.get('/', (req, res) => {
-  res.redirect('/index');
+  window.location = '/index';
 });
 
 app.get('/index', (req, res) => {
