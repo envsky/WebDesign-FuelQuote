@@ -30,7 +30,7 @@ app.set('view engine', 'html');
 app.set('views', dirname);
 
 app.get('/', (req, res) => {
-  window.location = '/index';
+  res.render(path.join(dirname + '/landing.html'), {message:req.flash('error')});
 });
 
 app.get('/index', (req, res) => {
